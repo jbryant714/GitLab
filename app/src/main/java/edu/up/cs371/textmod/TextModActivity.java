@@ -16,17 +16,24 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import java.util.ArrayList;
 
-public class TextModActivity extends ActionBarActivity {
+public class TextModActivity extends ActionBarActivity implements View.OnClickListener {
 
     // array-list that contains our images to display
     private ArrayList<Bitmap> images;
 
     // instance variables containing widgets
     private ImageView imageView; // the view that shows the image
+
+    protected EditText textInput;
+    protected Button copyButton;
+    protected Spinner spinner;
+
 
     /**
      * @see android.app.Activity#onCreate(android.os.Bundle)
@@ -40,11 +47,14 @@ public class TextModActivity extends ActionBarActivity {
 
         // set instance variables for our widgets
         imageView = (ImageView)findViewById(R.id.imageView);
+        textInput = (EditText)findViewById(R.id.textInput);
+        copyButton = (Button)findViewById(R.id.copyButton);
+        copyButton.setOnClickListener(this);
 
         // Set up the spinner so that it shows the names in the spinner array resources
         //
         // get spinner object
-        Spinner spinner = (Spinner)findViewById(R.id.spinner);
+        spinner = (Spinner)findViewById(R.id.spinner);
         // get array of strings
         String[] spinnerNames = getResources().getStringArray(R.array.spinner_names);
         // create adapter with the strings
@@ -103,6 +113,13 @@ public class TextModActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onClick(View v) {
+        String selected = (String) spinner.getSelectedItem();
+        String display = textInput.getText() + selected;
+        textInput.setText(display);
+    }
+
     /**
      * class that handles our spinner's selection events
      */
@@ -128,4 +145,6 @@ public class TextModActivity extends ActionBarActivity {
             // your code here
         }
     }
+
+
 }
