@@ -5,6 +5,7 @@ package edu.up.cs371.textmod;
  *
  * Allow text to be modified in simple ways with button-presses.
  */
+import android.content.DialogInterface;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -16,11 +17,16 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import java.util.ArrayList;
 
-public class TextModActivity extends ActionBarActivity {
+public class TextModActivity extends ActionBarActivity implements View.OnClickListener {
+
+    protected EditText textInput;
+    protected Button reverseText;
 
     // array-list that contains our images to display
     private ArrayList<Bitmap> images;
@@ -40,6 +46,11 @@ public class TextModActivity extends ActionBarActivity {
 
         // set instance variables for our widgets
         imageView = (ImageView)findViewById(R.id.imageView);
+
+        textInput = (EditText)findViewById(R.id.editText);
+        reverseText = (Button)findViewById(R.id.button4);
+        reverseText.setOnClickListener(this);
+
 
         // Set up the spinner so that it shows the names in the spinner array resources
         //
@@ -101,6 +112,14 @@ public class TextModActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+
+    @Override
+    public void onClick(View v) {
+        String temp = textInput.getText()+"";
+        String reverse = new StringBuilder(temp).reverse().toString();
+        textInput.setText(reverse);
     }
 
     /**
