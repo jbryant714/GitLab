@@ -5,6 +5,7 @@ package edu.up.cs371.textmod;
  *
  * Allow text to be modified in simple ways with button-presses.
  */
+import android.content.DialogInterface;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -16,18 +17,23 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import java.util.ArrayList;
 
-public class TextModActivity extends ActionBarActivity {
+public class TextModActivity extends ActionBarActivity implements View.OnClickListener {
 
     // array-list that contains our images to display
     private ArrayList<Bitmap> images;
 
     // instance variables containing widgets
     private ImageView imageView; // the view that shows the image
-
+    protected EditText textInput;
+    protected Button clearText;
+    protected Button lowerCase;
+    protected Button upperCase;
     /**
      * @see android.app.Activity#onCreate(android.os.Bundle)
      */
@@ -72,7 +78,13 @@ public class TextModActivity extends ActionBarActivity {
 
         // define a listener for the spinner
         spinner.setOnItemSelectedListener(new MySpinnerListener());
-
+        clearText = (Button) findViewById(R.id.clear);
+        textInput = (EditText) findViewById(R.id.editText);
+        clearText.setOnClickListener(this);
+        lowerCase = (Button) findViewById(R.id.lower);
+        lowerCase.setOnClickListener(this);
+        upperCase = (Button) findViewById(R.id.upper);
+        upperCase.setOnClickListener(this);
     }
 
     /**
@@ -101,6 +113,20 @@ public class TextModActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onClick(View v) {
+        if(v== clearText ) {
+        textInput.setText("");
+        }
+        else if(v== lowerCase){
+            textInput.setText((textInput.getText()+"").toLowerCase());
+        }
+        else if(v== upperCase){
+            textInput.setText((textInput.getText()+"").toUpperCase());
+        }
+
     }
 
     /**
