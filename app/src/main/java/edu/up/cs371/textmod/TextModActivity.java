@@ -25,6 +25,11 @@ import java.util.ArrayList;
 
 public class TextModActivity extends ActionBarActivity implements View.OnClickListener {
 
+    protected EditText textInput;
+    protected Button reverseText;
+    protected Button copyButton;
+    protected Spinner spinner;
+
     // array-list that contains our images to display
     private ArrayList<Bitmap> images;
 
@@ -47,10 +52,17 @@ public class TextModActivity extends ActionBarActivity implements View.OnClickLi
         // set instance variables for our widgets
         imageView = (ImageView)findViewById(R.id.imageView);
 
+        textInput = (EditText)findViewById(R.id.editText);
+        reverseText = (Button)findViewById(R.id.button4);
+        reverseText.setOnClickListener(this);
+        copyButton = (Button)findViewById(R.id.button2);
+        copyButton.setOnClickListener(this);
+
+
         // Set up the spinner so that it shows the names in the spinner array resources
         //
         // get spinner object
-        Spinner spinner = (Spinner)findViewById(R.id.spinner);
+        spinner = (Spinner)findViewById(R.id.spinner);
         // get array of strings
         String[] spinnerNames = getResources().getStringArray(R.array.spinner_names);
         // create adapter with the strings
@@ -115,10 +127,21 @@ public class TextModActivity extends ActionBarActivity implements View.OnClickLi
         return super.onOptionsItemSelected(item);
     }
 
+
     @Override
     public void onClick(View v) {
-        if(v== clearText ) {
-        textInput.setText("");
+        if (v == reverseText){
+            String temp = textInput.getText()+"";
+            String reverse = new StringBuilder(temp).reverse().toString();
+            textInput.setText(reverse);
+        }
+        else if (v == copyButton) {
+            String selected = (String) spinner.getSelectedItem();
+            String display = textInput.getText() + selected;
+            textInput.setText(display);
+        }
+       else if(v== clearText ) {
+            textInput.setText("");
         }
         else if(v== lowerCase){
             textInput.setText((textInput.getText()+"").toLowerCase());
@@ -126,6 +149,8 @@ public class TextModActivity extends ActionBarActivity implements View.OnClickLi
         else if(v== upperCase){
             textInput.setText((textInput.getText()+"").toUpperCase());
         }
+
+
 
     }
 
