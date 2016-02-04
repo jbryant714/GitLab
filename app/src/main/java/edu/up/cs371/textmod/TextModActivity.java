@@ -78,12 +78,12 @@ public class TextModActivity extends ActionBarActivity implements View.OnClickLi
 
         // define a listener for the spinner
         spinner.setOnItemSelectedListener(new MySpinnerListener());
-        clearText = (Button) findViewById(R.id.clear);
+        clearText = (Button) findViewById(R.id.button);
         textInput = (EditText) findViewById(R.id.editText);
         clearText.setOnClickListener(this);
-        lowerCase = (Button) findViewById(R.id.lower);
+        lowerCase = (Button) findViewById(R.id.button7);
         lowerCase.setOnClickListener(this);
-        upperCase = (Button) findViewById(R.id.upper);
+        upperCase = (Button) findViewById(R.id.button6);
         upperCase.setOnClickListener(this);
     }
 
