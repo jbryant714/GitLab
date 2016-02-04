@@ -29,6 +29,7 @@ public class TextModActivity extends ActionBarActivity implements View.OnClickLi
     protected Button reverseText;
     protected Button copyButton;
     protected Spinner spinner;
+    protected Button spaces;
 
     // array-list that contains our images to display
     private ArrayList<Bitmap> images;
@@ -57,6 +58,8 @@ public class TextModActivity extends ActionBarActivity implements View.OnClickLi
         reverseText.setOnClickListener(this);
         copyButton = (Button)findViewById(R.id.button2);
         copyButton.setOnClickListener(this);
+        spaces = (Button)findViewById(R.id.spaceButton);
+        spaces.setOnClickListener(this);
 
 
         // Set up the spinner so that it shows the names in the spinner array resources
@@ -148,6 +151,10 @@ public class TextModActivity extends ActionBarActivity implements View.OnClickLi
         }
         else if(v== upperCase){
             textInput.setText((textInput.getText()+"").toUpperCase());
+        }
+        else if(v == spaces) {
+            String text = textInput.getText().toString().replace(" ", "");
+            textInput.setText(text);
         }
 
 
