@@ -25,7 +25,7 @@ import java.util.ArrayList;
 
 public class TextModActivity extends ActionBarActivity implements View.OnClickListener {
 
-    protected EditText textInput;
+
     protected Button reverseText;
     protected Button copyButton;
     protected Spinner spinner;
