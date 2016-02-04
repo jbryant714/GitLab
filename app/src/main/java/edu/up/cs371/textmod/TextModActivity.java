@@ -22,6 +22,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class TextModActivity extends ActionBarActivity implements View.OnClickListener {
 
@@ -29,7 +30,7 @@ public class TextModActivity extends ActionBarActivity implements View.OnClickLi
     protected Button reverseText;
     protected Button copyButton;
     protected Spinner spinner;
-
+    protected Button alter;
     // array-list that contains our images to display
     private ArrayList<Bitmap> images;
 
@@ -97,6 +98,8 @@ public class TextModActivity extends ActionBarActivity implements View.OnClickLi
         lowerCase.setOnClickListener(this);
         upperCase = (Button) findViewById(R.id.button6);
         upperCase.setOnClickListener(this);
+        alter= (Button) findViewById(R.id.alt);
+        alter.setOnClickListener(this);
     }
 
     /**
@@ -149,10 +152,30 @@ public class TextModActivity extends ActionBarActivity implements View.OnClickLi
         else if(v== upperCase){
             textInput.setText((textInput.getText()+"").toUpperCase());
         }
+        else if(v== alter){
+            String str = new String(textInput.getText()+"");
+            char [] chr= str.toCharArray();
+            int n = chr.length;
+            char ch;
+            int i;
+            for(i = 0; i < n; i++) {
+                if(i % 2 == 0) {
+                    ch = Character.toLowerCase(chr[i]);
+                    chr[i]=ch;
+                } else {
+                    ch = Character.toUpperCase(chr[i]);
+                    chr[i]=ch;
+                }
+            }
+            textInput.setText(new String(chr)); }
+
+
+            }
 
 
 
-    }
+
+
 
     /**
      * class that handles our spinner's selection events
