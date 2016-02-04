@@ -10,6 +10,8 @@
         <item>@mipmap/nuxoll</item>
         <item>@mipmap/vegdahl</item>
         <item>@mipmap/lab_picture</item>
+        <item>@mipmap/jacob</item>
+        <item>@mipmap/wolf</item>
     </array>
 
     <string-array name="spinner_names">
@@ -17,6 +19,8 @@
         <item>Dr. Andrew Nuxoll</item>
         <item>Dr. Steven Vegdahl</item>
         <item>Polar Bears</item>
+        <item>Jacob Bryant</item>
+        <item>Abraham</item>
     </string-array>
 
 </resources>
