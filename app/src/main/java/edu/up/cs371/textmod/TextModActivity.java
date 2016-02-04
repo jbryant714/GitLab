@@ -117,6 +117,7 @@ public class TextModActivity extends ActionBarActivity implements View.OnClickLi
 
     @Override
     public void onClick(View v) {
+
         String temp = textInput.getText()+"";
         String reverse = new StringBuilder(temp).reverse().toString();
         textInput.setText(reverse);

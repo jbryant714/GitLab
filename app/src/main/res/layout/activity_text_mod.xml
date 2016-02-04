@@ -34,7 +34,7 @@
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/textInput"
+            android:id="@+id/editText"
             android:layout_weight="1"
             android:textSize="@dimen/edittext_font_size"
             android:singleLine="true"
@@ -122,12 +122,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/copy_name_button_text"
-            android:id="@+id/copyButton"
+            android:id="@+id/button2"
             android:textSize="@dimen/button_font_size"
             android:textColor="@color/button_text_color"
-            android:background="@color/button_color"
-            android:clickable="true"
-            android:nestedScrollingEnabled="true" />
+            android:background="@color/button_color" />
 
         <Space
             android:layout_width="0sp"
@@ -166,8 +164,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/spinner"
                 android:layout_weight="0"
-                android:background="@color/spinner_color"
-                android:touchscreenBlocksFocus="false" />
+                android:background="@color/spinner_color" />
 
             <Space
                 android:layout_width="match_parent"
