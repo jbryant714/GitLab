@@ -32,6 +32,7 @@ public class TextModActivity extends ActionBarActivity implements View.OnClickLi
     protected Spinner spinner;
     protected Button alter;
     protected Button spaces;
+    protected Button noPunc;
 
     // array-list that contains our images to display
     private ArrayList<Bitmap> images;
@@ -62,6 +63,8 @@ public class TextModActivity extends ActionBarActivity implements View.OnClickLi
         copyButton.setOnClickListener(this);
         spaces = (Button)findViewById(R.id.spaceButton);
         spaces.setOnClickListener(this);
+        noPunc= (Button)findViewById(R.id.noButton);
+        noPunc.setOnClickListener(this);
 
 
         // Set up the spinner so that it shows the names in the spinner array resources
@@ -176,6 +179,11 @@ public class TextModActivity extends ActionBarActivity implements View.OnClickLi
                 }
             }
             textInput.setText(new String(chr)); }
+        else if(v== noPunc)
+        {
+            textInput.setText((textInput.getText()+"").replaceAll("\\p{P}", ""));
+
+        }
 
 
             }
